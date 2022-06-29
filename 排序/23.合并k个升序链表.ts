@@ -16,6 +16,14 @@
  *     }
  * }
  */
+class ListNode {
+    val: number
+    next: ListNode | null
+    constructor(val?: number, next?: ListNode | null) {
+        this.val = (val===undefined ? 0 : val)
+        this.next = (next===undefined ? null : next)
+    }
+}
 
  function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
   if(lists.length === 0) return null;//没用元素则返回空
