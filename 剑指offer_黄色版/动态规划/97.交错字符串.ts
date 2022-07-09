@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-isInterleave("aabcc", "dbbca", "aadbbcbcac")
+// isInterleave("aabcc", "dbbca", "aadbbcbcac")
 function isInterleave(s1: string, s2: string, s3: string): boolean {
   if (s1.length + s2.length != s3.length) {
     return false;
