@@ -8,8 +8,8 @@
 function hammingWeight(n: number): number {
   let count: number = 0;
   while (n) {
-    if (n % 2) count++;
-    n = Math.floor(n / 2);
+    count++;
+    n = (n - 1) & n;
   }
   return count;
 };
