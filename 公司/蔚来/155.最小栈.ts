@@ -3,34 +3,32 @@
  *
  * [155] 最小栈
  */
+
 // @lc code=start
 class MinNode {
     next: MinNode | null;
     val: number | undefined;
-    constructor(val?: number | undefined, next?: MinNode | undefined) {
+    constructor(val?: number | undefined, next?: MinNode | null) {
         this.val = val;
         this.next = next ? next : null;
     }
 }
 class MinStack {
     private stack: number[];
-    private index: MinNode;
+    private root: MinNode;
     constructor() {
         this.stack = [];
-        this.index = new MinNode(-1);
+        this.root = new MinNode();
     }
 
     push(val: number): void {
-        let temp: MinNode = this.index;
-        while (temp.next) {
-            if (val < this.stack[temp.next.val]) {
-                break;
-            }
+        let temp = this.root;
+        while (temp.next && this.stack[temp.next.val] <= val) {
             temp = temp.next;
         }
-        let data: MinNode = new MinNode(this.stack.length);
-        data.next = temp.next;
-        temp.next = data;
+        let tempNode = new MinNode(this.stack.length);
+        tempNode.next = temp.next;
+        temp.next = tempNode;
         this.stack.push(val);
     }
 
@@ -39,22 +37,30 @@ class MinStack {
             return;
         }
         this.stack.pop();
-        let temp: MinNode = this.index;
+        let temp = this.root;
         while (temp.next) {
             if (temp.next.val === this.stack.length) {
                 break;
             }
             temp = temp.next;
         }
-        temp.next = temp.next.next;
+        if (temp.next) {
+            temp.next = temp.next.next;
+        }
     }
 
     top(): number {
-        return this.stack[this.stack.length - 1];
+        if (this.stack.length) {
+            return this.stack[this.stack.length - 1];
+        }
+        return undefined;
     }
 
     getMin(): number {
-        return this.stack[this.index.next.val];
+        if (this.root.next) {
+            return this.stack[this.root.next.val];
+        }
+        return undefined;
     }
 }
 
