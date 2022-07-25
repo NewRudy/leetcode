@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #flex_container {
+        height: 800px;
+        display: flex;
+        justify-content: space-between;
+        /* align-items: center; */
+        /* flex-direction: column; */
+      }
+      .item {
+        border-width: 50px;
+        border-style: solid;
+        border-color: transparent transparent grey transparent; /* 通过将原始值缩小，border 放大，然后利用四值赋值（顺时针）即可 */
+      }
+      #grid_container {
+        height: 800px;
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 2vh;
+      }
+      .float_item {
+        width: 50px;
+        height: 50px;
+        float: left;
+        background-color: gray;
+      }
+      .temp_container::after {
+        clear: both;
+        display: block;
+        content: '\20';
+      }
+      #container {
+        display: grid;
+        grid-template-rows: 150px 1fr 150px;
+        height: 800px;
+      }
+      div{
+        place-items: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- <div id="flex_container">
+      <div class="item">temp</div>
+      <div class="item">temp</div>
+    </div> -->
+    <!-- <div id="grid_container">
+      <div class="item">temp</div>
+      <div class="item">temp</div>
+      <div class="item">temp</div>
+      <div class="item">temp</div>
+      <div class="item">temp</div>
+    </div> -->
+    <!-- <div class="temp_container">
+      <div class="float_item">1</div>
+      <div class="float_item">1</div>
+      <div class="float_item" style="position: relative; left: 50px;">2</div>
+    </div> -->
+    <!-- <div id="container">
+      <div>1</div>
+      <div>2</div>
+    </div> -->
+    <div id="container">
+      <div>test</div>
+      <div>test</div>
+      <div>test</div>
+    </div>
+  </body>
+</html>
