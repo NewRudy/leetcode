@@ -22,5 +22,40 @@ function digitSum(num: number): number {
   }
   return sum;
 }
+// movingCount(3, 1, 0);
 
-movingCount(3, 1, 0);
+
+// minNumber([3, 30, 34, 5, 9]);
+function minNumber(nums: number[]): string {
+  nums.sort((a, b) => {
+    let first = (a + '').split(''), second = (b + '').split('');
+    let firstValue = first.reduce((i, j) => +i + +j, 0);
+    let secondValue = second.reduce((i, j) => +i + +j, 0);
+    if (firstValue === secondValue) {
+      return second.length - first.length;
+    }
+    return firstValue - secondValue;
+  })
+  return nums.reduce((front, end) => front += end, '');
+};
+
+function minNumber1(nums: number[]): string {
+  return nums.sort((x, y) => +('' + x + y) - +('' + y + x)).join('');
+};
+
+translateNum(12258)
+function translateNum(num: number): number {
+  let front = 1, end = 1, temp, value;
+  let str = ('' + num).split('');
+  for (let i = 1; i < str.length; i++) {
+    temp = end;
+    value = +(str[i - 1] + str[i]);
+    if (value >= 10 && value <= 25) {
+      end += front;
+    } else {
+      end = end;
+    }
+    front = temp;
+  }
+  return end;
+};
