@@ -43,7 +43,7 @@ function minNumber1(nums: number[]): string {
   return nums.sort((x, y) => +('' + x + y) - +('' + y + x)).join('');
 };
 
-translateNum(12258)
+// translateNum(12258)
 function translateNum(num: number): number {
   let front = 1, end = 1, temp, value;
   let str = ('' + num).split('');
@@ -59,3 +59,4 @@ function translateNum(num: number): number {
   }
   return end;
 };
+
